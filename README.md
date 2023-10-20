@@ -49,7 +49,7 @@
   ```
 - Teniendo en cuenta los radios de los circulos se asigna el tipo de monedas que son (1 euro, 50 cents., 20 cents., etc).
 
-- ![MONEDAS SOLAPADAS](results/tarea2.PNG "resultado de monedas solapadas")
+- ![MONEDAS SOLAPADAS](results/resultado2.PNG "resultado de monedas solapadas")
 
 En esta tarea existe un error el cual no le encontramos solución, las monedas de 1 euro y de 50 céntimos tienen prácticamente el mismo tamaño
 y cuando una de las dos se encuentra muy solapada por otra moneda es muy complicado diferenciarlas.
