@@ -52,7 +52,9 @@
   ![MONEDAS SOLAPADAS](results/resultado2.png "resultado de monedas solapadas")
 
 En esta tarea existe un error el cual no le encontramos solución, las monedas de 1 euro y de 50 céntimos tienen prácticamente el mismo tamaño
-y cuando una de las dos se encuentra muy solapada por otra moneda es muy complicado diferenciarlas.
+y cuando una de las dos se encuentra muy solapada por otra moneda es muy complicado diferenciarlas. Una solución que se nos ocurrió era diferenciar
+las monedas por su tono de color, pero si la moneda esta muy solapada son prácticamente iguales en esta característica también, además de que los tonos
+de color en las monedas pueden variar bastante dependiendo de la iluminación.
 
 ## Detección del valor de la moneda clickeada
 
