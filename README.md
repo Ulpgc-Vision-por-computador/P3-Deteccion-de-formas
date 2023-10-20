@@ -32,7 +32,7 @@
 
 ***El código carga una imagen que detecta monedas a pesar de estar solapadas***
 
-- `img = cv2.imread("media/monedones_solapados.jpg")`. Carga la imagen de ejemplo con las moendas.
+- `img = cv2.imread("media/monedones_solapados.jpg")`. Carga la imagen de ejemplo con las monedas.
 - Luego, se pasa la imagen a escala de grises y se le aplica un umbralizado invertido y un operador Canny.
 - Se realiza la busqueda de los círculos o bordes de las monedas haciendo uso de la función *HoughCircles*.
   ```py
@@ -49,7 +49,36 @@
   ```
 - Teniendo en cuenta los radios de los circulos se asigna el tipo de monedas que son (1 euro, 50 cents., 20 cents., etc).
 
-- ![MONEDAS SOLAPADAS](results/resultado2.png "resultado de monedas solapadas")
+  ![MONEDAS SOLAPADAS](results/resultado2.png "resultado de monedas solapadas")
 
 En esta tarea existe un error el cual no le encontramos solución, las monedas de 1 euro y de 50 céntimos tienen prácticamente el mismo tamaño
+y cuando una de las dos se encuentra muy solapada por otra moneda es muy complicado diferenciarlas.
+
+## Detección del valor de la moneda clickeada
+
+***El código carga una imagen en la que se puede clickear una moneda y muestra el valor de ésta.***
+
+- El proceso para detectar las monedas en la imagen es el mismo que en la anterior tarea.
+- Se define una función *on_click* en el que se calcula la moneda que se encuentra a menor distancia del click dado, y así mostrar el valor de dicha moneda.
+  ```py
+  def on_click(event, x, y, flags, params):
+    global selected_circle
+    if event == cv2.EVENT_LBUTTONDOWN:
+        # Calcula la distancia del clic de ratón a cada círculo y selecciona el más cercano
+        min_distance = float('inf')
+        for circle in circles[0]:
+            center = (circle[0], circle[1])
+            radius = circle[2]
+            distance = np.sqrt((x - center[0]) ** 2 + (y - center[1]) ** 2)
+            if distance < min_distance:
+                min_distance = distance
+                selected_circle = circle
+        if selected_circle is not None:
+            print("")
+            cv2.destroyAllWindows()
+  ```
+ - Se le asigna a la ventana la función callback que se ha creado y se muestra dicha ventana.
+ - Al clickear en una moneda en la ventana se hará un print de su valor.
+
+En esta tarea existe el mismo error que en la anterior, las monedas de 1 euro y de 50 céntimos tienen prácticamente el mismo tamaño
 y cuando una de las dos se encuentra muy solapada por otra moneda es muy complicado diferenciarlas.
