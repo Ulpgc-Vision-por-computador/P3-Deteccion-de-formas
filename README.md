@@ -29,5 +29,25 @@
   Figura 1: Imagen de las monedas tras ser filtradas
 
 ## Detección de monedas estando solapadas
-  
 
+***El código carga una imagen que detecta monedas a pesar de estar solapadas***
+
+- `img = cv2.imread("media/monedones_solapados.jpg")`. Carga la imagen de ejemplo con las moendas.
+- Luego, se pasa la imagen a escala de grises y se le aplica un umbralizado invertido y un operador Canny.
+- Se realiza la busqueda de los círculos o bordes de las monedas haciendo uso de la función *HoughCircles*.
+  ```py
+  circles = cv2.HoughCircles(
+    edges,
+    cv2.HOUGH_GRADIENT,
+    dp=1,  
+    minDist=50, 
+    param1=140,  
+    param2=20,  
+    minRadius=90,  
+    maxRadius=120  
+  ) 
+```
+- Teniendo en cuenta los radios de los circulos se asigna el tipo de monedas que son (1 euro, 50 cents., 20 cents., etc).
+
+En esta tarea existe un error el cual no le encontramos solución, las monedas de 1 euro y de 50 céntimos tienen prácticamente el mismo tamaño
+y cuando una de las dos se encuentra muy solapada por otra moneda es muy complicado diferenciarlas.
