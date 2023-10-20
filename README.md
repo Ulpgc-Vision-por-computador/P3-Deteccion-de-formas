@@ -28,5 +28,6 @@
 
   Figura 1: Imagen de las monedas tras ser filtradas
 
+## Detección de monedas estando solapadas
   
 
