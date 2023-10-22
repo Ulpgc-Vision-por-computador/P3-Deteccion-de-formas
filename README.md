@@ -84,3 +84,16 @@ de color en las monedas pueden variar bastante dependiendo de la iluminación.
 
 En esta tarea existe el mismo error que en la anterior, las monedas de 1 euro y de 50 céntimos tienen prácticamente el mismo tamaño
 y cuando una de las dos se encuentra muy solapada por otra moneda es muy complicado diferenciarlas.
+
+
+## Clasificador de microplásticos
+
+***El código hace un clasificador por cada tipo de microplastico contemplado y muestra lso resultados con la imágenes de muestra***
+
+- Se crea una matriz de confusión confusionMatrix que se inicializa con ceros. Esta matriz se utilizará para evaluar el rendimiento de algún tipo de clasificación o detección en las imágenes.
+- Ahora para cada filtro se itera sobre las 3 imágenes.
+  - **Filtro de fragmentos**
+    - Se convierte cada imagen a escala de grises: `gray = cv2.cvtColor(imgList[i], cv2.COLOR_BGR2GRAY)`
+    - Se aplica un desenfoque gaussiano para obtener mejor los contornos y se dilata la imagen resultante para rellenar los espacios encontrados en los microplásticos al  intentar obtener sus contornos
+    - Luego, se realiza un umbral binario invertido para resaltar los objetos más transparentes, definiendo el  parámetro umbral a 124: `res,img_th1 = cv2.threshold(dilated,umbral,255,cv2.THRESH_BINARY_INV)`
+    - Se dilata de nuevo la imagen, y por último se cuentan los contornos externos y se almacena la cantidad en la primera fila de confusionMatrix.
