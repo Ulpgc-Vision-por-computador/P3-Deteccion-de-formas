@@ -97,3 +97,13 @@ y cuando una de las dos se encuentra muy solapada por otra moneda es muy complic
     - Se aplica un desenfoque gaussiano para obtener mejor los contornos y se dilata la imagen resultante para rellenar los espacios encontrados en los microplásticos al  intentar obtener sus contornos
     - Luego, se realiza un umbral binario invertido para resaltar los objetos más transparentes, definiendo el  parámetro umbral a 124: `res,img_th1 = cv2.threshold(dilated,umbral,255,cv2.THRESH_BINARY_INV)`
     - Se dilata de nuevo la imagen, y por último se cuentan los contornos externos y se almacena la cantidad en la primera fila de confusionMatrix.
+
+ - **Filtro de pellets**
+   - Primero se convierte la imagen a escala de grises
+   - Luego el código se suavizan las altas frecuencias mediante un desenfoque `cv2.medianBlur`
+   - Ahora se utiliza la transformada de Hough para encontrar círculos encontrados se considerarám un acierto y se almacenará ña cantidad en la segunda fila de la `confussionMatrix`
+
+ - **Filtro de alquitrán**
+   - Se convierte la imagen a escala de grises, se aplica un desenfoque gaussiano y se realiza un umbral binario invertido para detectar objetos oscuros, Un procedimiento similar al realizado en el filtro de fragmentos utilizando un umbralizado distinto.
+   - Se detectan los contornos externos y se almacena 
+   - 
