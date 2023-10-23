@@ -105,5 +105,11 @@ y cuando una de las dos se encuentra muy solapada por otra moneda es muy complic
 
  - **Filtro de alquitrán**
    - Se convierte la imagen a escala de grises, se aplica un desenfoque gaussiano y se realiza un umbral binario invertido para detectar objetos oscuros, Un procedimiento similar al realizado en el filtro de fragmentos utilizando un umbralizado distinto.
-   - Se detectan los contornos externos y se almacena 
-   - 
+   - Se detectan los contornos externos y se almacena la cantidad en la últma fila de la matriz de confusión.
+  
+    
+ - Después de realizar estos filtros, se utiliza la biblioteca seaborn para visualizar la matriz de confusión como un mapa de calor. Este mapa de calor muestra las predicciones en el eje x y las anotaciones reales en el eje y, con los valores de la matriz en cada celda.
+
+![MATRIZ DE CONFUSIÓN](results/output.png "matriz de confusión")
+
+Figura : resultados de los clasificadores
